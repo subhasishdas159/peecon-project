@@ -1,22 +1,22 @@
 <script>
+
 	import page from "page";
-	import Super from './pages/Super'
-	import Movie from './pages/Movie'
 	import Fallback from './pages/Fallback'
+	import Challan from './pages/Challan'
+	import RateChart from './pages/RateChart'
+
+	import Nav from './comps/nav.svelte'
 
 	let route = null
 	let params = null
+	let active = "challan"
 
-	page('/movie', () => route = Movie)
-	page('/movie/:id', (ctx) => {params = ctx.params; route = Movie})
-	page('/super', () => route = Super)
+	page('/challan', () => {route = Challan; active = "challan"})
+	page('/ratechart', () => {route = RateChart; active = "ratechart"})
 	page('/*', () => route = Fallback)
 	page()
-
 </script>
 
-<a href="/movie/23">movie/id</a><br>
-<a href="/super">super</a><br>
-<a href="/sad">sad</a><br>
+<Nav {active} />
 
 <svelte:component this={route} {params}/>
