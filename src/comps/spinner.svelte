@@ -13,7 +13,7 @@
 <style>
 	.loading{
 		position: fixed;
-		left: 45%;
-		top: 50%;
+		left: 50%;
+		top: 40%;
 	}
 </style>

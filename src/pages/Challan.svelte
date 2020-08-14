@@ -1,11 +1,13 @@
 <script>
 	import {onMount} from 'svelte'
 	import {getRates} from '../utils/ratesFetch.js'
-	import TextInput from '../comps/textInput'
+	import SerialInput from '../comps/serialInput'
 	import Spinner from '../comps/spinner'
-	
+	import ChallanTable from '../comps/challanTable'
+
 	let rateChart = []
 	let loading = false
+	let clearInput = false
 
 	onMount(async () => {
 		loading = true
@@ -22,6 +24,7 @@
 		} else {
 			foundArray = [...foundArray, foundItem]
 		}
+		clearInput = true
 	}
 
 	const foundDetele = (itemToDelete) => {
@@ -41,27 +44,20 @@
 		{:then rates}
 
 	 
-	  	{#each rates as rate (rate.gsx$serial.$t)}
+	  	<!-- {#each rates as rate (rate.gsx$serial.$t)}
 	        {rate.gsx$serial.$t}
 	        {rate.gsx$name.$t}
 	        {rate.gsx$rate.$t}<br>
-	     {/each}
+	     {/each} -->
 
 		{:catch error}
 			<p style="color: red">{error.message}</p>
 		{/await}
-	{/if}
 
-		<TextInput {rateChart} on:foundItem={(event) => foundItem = event.detail.foundItem}/>
-		
-		{#if Object.keys(foundItem).length}
-			<span>{foundItem.gsx$name.$t}</span>
-			<a class="btn-floating btn-small waves-effect waves-light red" on:click={foundPush}><i class="material-icons" >add</i></a>
-		{/if}
+		<SerialInput {rateChart} on:foundPush={foundPush} on:foundItem={(event) => foundItem = event.detail.foundItem} bind:clearInput={clearInput}/>
 			
-    {#each foundArray as item (item.gsx$serial.$t)}
-    	{item.gsx$name.$t}<a class="btn-floating btn-small waves-effect waves-light red" on:click={foundDetele(item)}><i class="material-icons" >delete</i></a>
-    {/each}
+    <ChallanTable {foundArray} on:foundDelete={(event) => foundDetele(event.detail.foundDelete)}/>
+	{/if}
 
 </div>         
 

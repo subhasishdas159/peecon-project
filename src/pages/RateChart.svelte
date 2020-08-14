@@ -19,8 +19,11 @@
 	    <thead>
 	      <tr>
           <th>Serial</th>
-          <th>Name</th>
-          <th>Rate</th>
+          <th>Description1</th>
+          <th>Description2</th>
+          <th>Unit</th>
+          <th>Rate220</th>
+          <th>Rate440</th>
 	      </tr>
 	    </thead>
 
@@ -35,8 +38,11 @@
 		    	{#each rates as rate (rate.gsx$serial.$t)}
 			      <tr>
 			        <td>{rate.gsx$serial.$t}</td>
-			        <td>{rate.gsx$name.$t}</td>
-			        <td>{rate.gsx$rate.$t}</td>
+			        <td>{rate.gsx$description1.$t}</td>
+			        <td>{rate.gsx$description2.$t}</td>
+			        <td>{rate.gsx$unit.$t}</td>
+			        <td>{rate.gsx$rate220.$t}</td>
+			        <td>{rate.gsx$rate440.$t}</td>
 			      </tr>
 			     {/each}
 		    </tbody>

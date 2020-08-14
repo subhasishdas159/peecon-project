@@ -7,7 +7,7 @@
 
 	import Nav from './comps/nav.svelte'
 
-	let route = null
+	let route = Challan
 	let params = null
 	let active = "challan"
 
