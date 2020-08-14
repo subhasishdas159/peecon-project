@@ -1,0 +1,62 @@
+@media print {
+	
+	.noprint {
+		display: none;
+	}
+
+	body{
+	  width: 21cm;
+	  height: 29.7cm;
+	  margin: 0 0.1cm 0.1cm 0; 
+   } 
+
+	nav {
+		display: none;
+	}
+
+	.navbar-fixed {
+		display: none;
+	}
+
+	table, th, td {
+	  border: 0.5px solid grey;
+	  border-collapse: collapse;
+	  padding-top: 1mm;
+	  padding-bottom: 1mm;
+	}
+
+	.container {
+		margin: 0;
+	}
+	
+	.noscreen {
+		display: block;
+	}
+
+	.text-right {
+		text-align: right;
+	}
+
+	.table-footer {
+		border: none;
+	}
+}
+
+@media screen
+{
+	tr.modal-trigger {
+    cursor: pointer;
+	} 
+
+  .noscreen {
+		display: none;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.blue {
+	color: blue;
+}
