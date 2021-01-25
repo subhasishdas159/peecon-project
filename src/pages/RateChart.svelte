@@ -2,7 +2,7 @@
 	import {onMount} from 'svelte'
 	import {getRates} from '../utils/ratesFetch.js'
 	import Spinner from '../comps/spinner'
-	
+
 	let rateChart = []
 	let loading = false
 
@@ -11,10 +11,10 @@
 		rateChart = await getRates()
 		loading = false
 	})
-	
+
 </script>
 
-<div class="container">
+ <div class="container" style="margin-top: 2rem">
 		<table class="highlight">
 	    <thead>
 	      <tr>
@@ -33,7 +33,7 @@
 	    {:else}
 				{#await rateChart}
 				{:then rates}
-			
+
 		    <tbody>
 		    	{#each rates as rate (rate.gsx$serial.$t)}
 			      <tr>
@@ -46,14 +46,14 @@
 			      </tr>
 			     {/each}
 		    </tbody>
-		 
+
 				{:catch error}
 					<p style="color: red">{error.message}</p>
 				{/await}
 			{/if}
 
  </table>
-</div>         
+</div>
 
 <style>
 	.loading{

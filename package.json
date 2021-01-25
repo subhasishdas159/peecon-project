@@ -5,7 +5,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "graphql": "^15.2.0",
     "num-words": "^1.2.0",
     "page": "^1.11.6",
